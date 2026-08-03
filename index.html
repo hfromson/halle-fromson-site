@@ -3,144 +3,106 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Halle Fromson — Every project is a journey. I run the route.</title>
-  <meta name="description" content="Scroll through a project the way Halle Fromson runs one: brief, plan, production, review, delivery. Creative operations and project management." />
+  <title>Halle Fromson — fly through a project, brief to finish line</title>
+  <meta name="description" content="Scroll to fly through a creative project the way Halle Fromson runs one: brief, plan, production, review, delivery. Creative operations and project management." />
   <meta property="og:title" content="Halle Fromson — creative operations & project management" />
-  <meta property="og:description" content="Scroll through a project from brief to finish line." />
+  <meta property="og:description" content="Scroll to fly through a project from brief to finish line." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="journey.css" />
+  <style>
+    :root, .sw-root {
+      --sw-bg: #FAF9F6;            /* == the stills' background — seamless posters */
+      --sw-ink: #16181D;
+      --sw-ink-soft: #43464E;
+      --sw-accent: #1F4D46;
+      --sw-font-display: "Fraunces", Georgia, serif;
+      --sw-font-body: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    .alt-links {
+      position: fixed; top: 14px; right: 16px; z-index: 200;
+      font-family: var(--sw-font-body); font-size: 12.5px; font-weight: 600;
+      letter-spacing: .05em; text-transform: uppercase;
+    }
+    .alt-links a {
+      color: var(--sw-ink); text-decoration: none; border: 1.5px solid currentColor;
+      border-radius: 99px; padding: 8px 14px; background: rgba(250,249,246,.85);
+    }
+    .alt-links a:hover { color: var(--sw-accent); }
+  </style>
 </head>
 <body>
-
-  <!-- fixed chrome: brand, skip link, progress rail, scroll hint -->
-  <div class="j-brand">
-    <a class="j-name" href="#s1">Halle Fromson</a>
-    <a class="j-skip" href="resume.html">60-second version →</a>
-  </div>
-
-  <nav class="j-rail" aria-label="Scenes">
-    <a href="#s1"><span class="dot"></span><span class="lbl">The brief</span></a>
-    <a href="#s2"><span class="dot"></span><span class="lbl">The plan</span></a>
-    <a href="#s3"><span class="dot"></span><span class="lbl">Production</span></a>
-    <a href="#s4"><span class="dot"></span><span class="lbl">The review</span></a>
-    <a href="#s5"><span class="dot"></span><span class="lbl">Finish line</span></a>
+  <div id="top"></div>
+  <nav class="alt-links" aria-label="Alternate version">
+    <a href="resume.html">60-second version →</a>
   </nav>
+  <div id="world"></div>
 
-  <div class="j-hint">Scroll the project</div>
-
-  <!-- SCENE 1 — THE BRIEF -->
-  <div class="scene-span" id="s1" data-scroll="1.7">
-    <section class="scene-stage s-brief" aria-label="The brief">
-      <div class="scene-world">
-        <div class="big-num">01</div>
-        <div class="paper-sheet sheet-1" aria-hidden="true">
-          <i class="w40"></i><i class="w80"></i><i class="w65"></i><i class="w72"></i><i class="w80"></i>
-        </div>
-        <div class="paper-sheet sheet-2" aria-hidden="true">
-          <i class="w40"></i><i class="w72"></i><i class="w80"></i><i class="w65"></i>
-        </div>
-      </div>
-      <div class="scene-copy">
-        <p class="scene-eyebrow">Creative operations · Project management</p>
-        <h1 class="scene-title">Every project starts as a <em>pile of ambition.</em></h1>
-        <p class="scene-body">A brief, a deadline, twelve opinions, and a hundred moving pieces. This is a short story about what happens next — and the person who keeps it moving.</p>
-        <div class="scene-tags"><span>Scroll the project</span></div>
-      </div>
-    </section>
-  </div>
-
-  <!-- SCENE 2 — THE PLAN -->
-  <div class="scene-span" id="s2" data-scroll="1.9">
-    <section class="scene-stage s-plan" aria-label="The plan">
-      <div class="scene-world">
-        <div class="blueprint" aria-hidden="true"></div>
-        <div class="gantt" aria-hidden="true">
-          <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-          <div class="milestone"></div>
-        </div>
-      </div>
-      <div class="scene-copy">
-        <p class="scene-eyebrow"><span class="scene-num">02</span>The plan</p>
-        <h2 class="scene-title">First, the chaos gets <em>a spine.</em></h2>
-        <p class="scene-body">Scopes, timelines, owners, dependencies. I break ambitious briefs into plans people can actually execute — and keep the plan honest as everything around it changes.</p>
-        <div class="scene-tags"><span>Scopes</span><span>Timelines</span><span>Dependencies</span><span>Owners</span></div>
-      </div>
-    </section>
-  </div>
-
-  <!-- SCENE 3 — PRODUCTION -->
-  <div class="scene-span" id="s3" data-scroll="1.9">
-    <section class="scene-stage s-prod" aria-label="Production">
-      <div class="scene-world">
-        <div class="card-col col-a" aria-hidden="true">
-          <div class="asset-card"><b>Key art — V3</b><span class="wip">In review</span></div>
-          <div class="asset-card"><b>Cutdown :15</b><span class="ok">Approved</span></div>
-          <div class="asset-card"><b>Social kit</b><span class="wip">With design</span></div>
-          <div class="asset-card"><b>Deck refresh</b><span class="ok">Delivered</span></div>
-        </div>
-        <div class="card-col col-b" aria-hidden="true">
-          <div class="asset-card"><b>Print specs</b><span class="ok">Trafficked</span></div>
-          <div class="asset-card"><b>Client notes R2</b><span class="wip">Routing</span></div>
-          <div class="asset-card"><b>Finishing files</b><span class="ok">QC passed</span></div>
-        </div>
-      </div>
-      <div class="scene-copy">
-        <p class="scene-eyebrow"><span class="scene-num">03</span>Production</p>
-        <h2 class="scene-title">Then the work starts <em>flying.</em></h2>
-        <p class="scene-body">Designers, directors, clients, vendors — versions and feedback everywhere. At Arsonal Design in LA I coordinate entertainment campaigns exactly like this: assets tracked, reviews on schedule, nothing lost between hands.</p>
-        <div class="scene-tags"><span>Versioning</span><span>Reviews</span><span>Trafficking</span><span>Specs</span></div>
-      </div>
-    </section>
-  </div>
-
-  <!-- SCENE 4 — THE REVIEW -->
-  <div class="scene-span" id="s4" data-scroll="1.9">
-    <section class="scene-stage s-review" aria-label="The review">
-      <div class="scene-world">
-        <div class="stamp" aria-hidden="true">APPROVED</div>
-        <div class="versions" aria-hidden="true">
-          <span>V1</span><span>V2</span><span>V3</span><span class="final">FINAL</span>
-        </div>
-      </div>
-      <div class="scene-copy">
-        <p class="scene-eyebrow"><span class="scene-num">04</span>The review</p>
-        <h2 class="scene-title">Feedback lands. <em>Nothing slips.</em></h2>
-        <p class="scene-body">Rounds run on time, decisions get captured, risks get flagged early — with options, not alarms. Clients see calm; the team gets clarity.</p>
-        <div class="scene-tags"><span>Approvals</span><span>Redlines</span><span>Escalation</span></div>
-      </div>
-    </section>
-  </div>
-
-  <!-- SCENE 5 — THE FINISH LINE -->
-  <div class="scene-span" id="s5" data-scroll="2.1">
-    <section class="scene-stage s-finish" aria-label="The finish line">
-      <div class="scene-world" aria-hidden="true">
-        <div class="confetti c1"></div><div class="confetti c2"></div>
-        <div class="confetti c3"></div><div class="confetti c4"></div>
-      </div>
-      <div class="scene-copy">
-        <p class="scene-eyebrow"><span class="scene-num">05</span>The finish line</p>
-        <h2 class="scene-title">Delivered. On time. <em>Intact.</em></h2>
-        <p class="scene-body">That journey is my job — and I'm looking for the next team that ships this way: creative operations, project management, and production coordination across agencies, brands, and boutique teams.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://www.linkedin.com/in/halle-fromson-1288aa114/" target="_blank" rel="noopener">Connect on LinkedIn</a>
-          <a class="btn btn-ghost" href="resume.html">Experience &amp; strengths →</a>
-        </div>
-        <p class="receipts"><b>Halle Fromson</b> · Project Manager, Arsonal Design (Los Angeles) · B.A. Psychology, Indiana University</p>
-      </div>
-    </section>
-  </div>
-
-  <footer class="j-foot">
-    <span>Halle Fromson · Los Angeles</span>
-    <span><a href="resume.html">The 60-second version</a> · <a href="https://www.linkedin.com/in/halle-fromson-1288aa114/" target="_blank" rel="noopener">LinkedIn</a></span>
-  </footer>
-
-  <svg class="grain" aria-hidden="true"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>
-
-  <script src="journey.js"></script>
+  <script src="scrub-engine.js"></script>
+  <script>
+    mountScrollWorld(document.getElementById('world'), {
+      brand: { name: 'Halle Fromson', href: '#top' },
+      hint: 'scroll the project',
+      nav: true,
+      atmosphere: true,
+      diveScroll: 1.4,
+      connScroll: 0.9,
+      sections: [
+        {
+          id: 'brief', label: 'The brief',
+          still: 'assets/brief.webp', clip: 'assets/vid/brief.mp4',
+          accent: '#1F4D46',
+          scroll: 1.7, linger: 0.45,
+          eyebrow: 'Creative operations · Project management',
+          title: 'Every project starts as a pile of ambition.',
+          body: 'A brief, a deadline, twelve opinions, and a hundred moving pieces. This is a short story about what happens next — and the person who keeps it moving.',
+          tags: [],
+        },
+        {
+          id: 'plan', label: 'The plan',
+          still: 'assets/plan.webp', clip: 'assets/vid/plan.mp4',
+          accent: '#2E6B5E',
+          eyebrow: 'The plan',
+          title: 'First, the chaos gets a spine.',
+          body: 'Scopes, timelines, owners, dependencies. I break ambitious briefs into plans people can actually execute — and keep the plan honest as everything changes.',
+          tags: ['Scopes', 'Timelines', 'Dependencies'],
+        },
+        {
+          id: 'production', label: 'Production',
+          still: 'assets/production.webp', clip: 'assets/vid/production.mp4',
+          accent: '#B4653F',
+          eyebrow: 'Production',
+          title: 'Then the work starts flying.',
+          body: 'Designers, directors, clients, vendors — versions and feedback everywhere. At Arsonal Design in LA I coordinate entertainment campaigns exactly like this: nothing lost between hands.',
+          tags: ['Versioning', 'Reviews', 'Trafficking'],
+        },
+        {
+          id: 'review', label: 'The review',
+          still: 'assets/review.webp', clip: 'assets/vid/review.mp4',
+          accent: '#1F4D46',
+          eyebrow: 'The review',
+          title: 'Feedback lands. Nothing slips.',
+          body: 'Rounds run on time, decisions get captured, risks get flagged early — with options, not alarms. Clients see calm; the team gets clarity.',
+          tags: ['Approvals', 'Redlines', 'Escalation'],
+        },
+        {
+          id: 'finish', label: 'Finish line',
+          still: 'assets/finish.webp', clip: 'assets/vid/finish.mp4',
+          accent: '#B4653F',
+          scroll: 1.9, linger: 0.5,
+          eyebrow: 'The finish line',
+          title: 'Delivered. On time. Intact.',
+          body: 'That journey is my job — and I’m looking for the next team that ships this way: creative operations, project management, and production coordination.',
+          tags: [],
+          cta: {
+            primary: { label: 'Connect on LinkedIn', href: 'https://www.linkedin.com/in/halle-fromson-1288aa114/' },
+            secondary: { label: 'Experience & strengths', href: 'resume.html' },
+          },
+        },
+      ],
+      connectors: ['assets/vid/conn1.mp4', 'assets/vid/conn2.mp4', 'assets/vid/conn3.mp4', 'assets/vid/conn4.mp4'],
+    });
+  </script>
 </body>
 </html>

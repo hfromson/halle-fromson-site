@@ -80,22 +80,27 @@ body {
 /* ---------- scene spans & stages ---------- */
 .scene-span { position: relative; }
 .scene-stage {
+  --p: 1; --pe: 1; --copy: 1;   /* no-JS default: everything visible */
   position: sticky; top: 0; height: 100vh; height: 100svh;
   overflow: hidden; display: grid; place-items: center;
   background: var(--scene-bg);
-  /* seam dissolve: driven by --p via JS (fade at entry/exit edges) */
-  opacity: var(--fade, 1);
 }
+/* scrub mode (JS): scenes are fixed, stacked, dissolved over each other */
+.j-scrub .scene-stage { position: fixed; inset: 0; height: 100vh; height: 100svh; }
+.j-scrub .scene-span { visibility: hidden; }
+.j-scrub .scene-span .scene-stage { visibility: visible; }
+.j-scrub .j-foot { position: relative; z-index: 60; }
 .scene-world {
   position: absolute; inset: 0; display: grid; place-items: center;
-  transform: scale(calc(0.94 + var(--p, 0) * 0.16));   /* the "camera dolly" */
+  transform: scale(calc(0.92 + var(--pe, 1) * 0.2));   /* the "camera dolly" */
   will-change: transform;
 }
 .scene-copy {
   position: relative; z-index: 5; max-width: 780px; padding: 0 clamp(22px, 5vw, 48px);
   text-align: center;
-  opacity: calc((var(--p, 0) - 0.08) * 6);
-  transform: translateY(calc((1 - min(var(--p, 0) * 3, 1)) * 26px));
+  opacity: var(--copy, 1);
+  transform: translateY(calc((1 - var(--copy, 1)) * 24px));
+  will-change: opacity, transform;
 }
 .scene-eyebrow {
   font-size: 12px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
@@ -123,15 +128,15 @@ body {
 }
 
 /* grain over everything, very quiet */
-.grain { position: fixed; inset: 0; z-index: 80; pointer-events: none; opacity: .05; mix-blend-mode: multiply; }
+.grain { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 80; pointer-events: none; opacity: .05; mix-blend-mode: multiply; }
 
 /* ============ SCENE 1 — THE BRIEF (bone paper) ============ */
 .s-brief { --scene-bg: var(--paper); --scene-ink: var(--ink); --scene-ink-soft: var(--ink-soft); --scene-accent: var(--teal); }
 .s-brief .big-num {
   position: absolute; right: -2vw; bottom: -6vh; z-index: 1;
   font-family: var(--serif); font-weight: 700; font-size: 46vh; line-height: 1;
-  color: var(--ink); opacity: .045;
-  transform: translateY(calc((1 - var(--p, 0)) * 6vh));
+  color: var(--ink); opacity: .06;
+  transform: translateY(calc((1 - var(--pe, 1)) * 10vh));
 }
 .paper-sheet {
   position: absolute; z-index: 2; width: min(300px, 32vw); aspect-ratio: 0.77;
@@ -142,8 +147,8 @@ body {
 .paper-sheet i { display: block; height: 9px; border-radius: 4px; background: #ECE8DE; }
 .paper-sheet i.w40 { width: 40%; background: var(--mint); }
 .paper-sheet i.w80 { width: 80%; } .paper-sheet i.w65 { width: 65%; } .paper-sheet i.w72 { width: 72%; }
-.sheet-1 { left: 8vw; top: 16vh; transform: rotate(-7deg) translateY(calc(var(--p,0) * -5vh)); }
-.sheet-2 { right: 10vw; top: 54vh; transform: rotate(5deg) translateY(calc(var(--p,0) * -9vh)); }
+.sheet-1 { left: 7vw; top: 14vh; transform: rotate(calc(-7deg + var(--pe,1) * -3deg)) translateY(calc(var(--pe,1) * -9vh)); }
+.sheet-2 { right: 9vw; top: 50vh; transform: rotate(calc(5deg + var(--pe,1) * 4deg)) translateY(calc(var(--pe,1) * -16vh)); }
 @media (max-width: 1100px) { .sheet-2 { display: none; } }
 
 /* ============ SCENE 2 — THE PLAN (blueprint teal) ============ */
@@ -153,12 +158,12 @@ body {
   background:
     repeating-linear-gradient(0deg, rgba(157,191,184,.12) 0 1px, transparent 1px 72px),
     repeating-linear-gradient(90deg, rgba(157,191,184,.12) 0 1px, transparent 1px 72px);
-  transform: translateY(calc(var(--p, 0) * -4vh));
+  transform: translateY(calc(var(--pe, 1) * -7vh));
 }
 .gantt {
   position: absolute; z-index: 2; left: 50%; top: 50%;
   transform: translate(-50%, -50%);
-  width: min(680px, 84vw); display: flex; flex-direction: column; gap: 14px; opacity: .5;
+  width: min(680px, 84vw); display: flex; flex-direction: column; gap: 16px; opacity: .8;
 }
 .gantt .bar { height: 16px; border-radius: 3px; background: var(--mint); transform-origin: left; }
 .gantt .bar:nth-child(1) { width: 58%; transform: scaleX(clamp(0, calc((var(--p,0) - .05) * 2.2), 1)); }
@@ -170,8 +175,8 @@ body {
 /* ============ SCENE 3 — PRODUCTION (warm studio) ============ */
 .s-prod { --scene-bg: var(--sand); --scene-ink: #221C14; --scene-ink-soft: #58503F; --scene-accent: var(--clay); }
 .card-col { position: absolute; z-index: 2; top: -12vh; display: flex; flex-direction: column; gap: 18px; width: min(200px, 22vw); }
-.col-a { left: 5vw;  transform: translateY(calc(var(--p, 0) * -16vh)); }
-.col-b { right: 5vw; top: -4vh; transform: translateY(calc(var(--p, 0) * -26vh)); }
+.col-a { left: 5vw;  transform: translateY(calc(var(--pe, 1) * -24vh)) rotate(-1.5deg); }
+.col-b { right: 5vw; top: -4vh; transform: translateY(calc(var(--pe, 1) * -38vh)) rotate(1.5deg); }
 .asset-card {
   background: #fff; border: 1px solid #E2D8C6; border-radius: 8px; padding: 13px 14px;
   box-shadow: 0 18px 40px -24px rgba(34,28,20,.4);
@@ -202,17 +207,17 @@ body {
   position: absolute; z-index: 1; top: 12vh; right: 8vw;
   font-family: var(--serif); font-weight: 700; font-size: clamp(60px, 9vw, 120px); line-height: 1;
   color: transparent; -webkit-text-stroke: 2px rgba(157,191,184,.28);
-  transform: rotate(-9deg) scale(calc(1.25 - var(--p, 0) * .25));
+  transform: rotate(-9deg) scale(calc(1.3 - var(--pe, 1) * .3));
   opacity: clamp(0, calc((var(--p,0) - .35) * 3), 1);
 }
 
 /* ============ SCENE 5 — THE FINISH LINE (light) ============ */
 .s-finish { --scene-bg: var(--paper); --scene-ink: var(--ink); --scene-ink-soft: var(--ink-soft); --scene-accent: var(--teal); }
-.confetti { position: absolute; width: 10px; height: 10px; border-radius: 2px; z-index: 1; opacity: calc(var(--p, 0) * .8); }
-.confetti.c1 { background: var(--mint); left: 16vw; top: 22vh; transform: rotate(15deg) translateY(calc(var(--p,0) * -4vh)); }
-.confetti.c2 { background: var(--clay); right: 20vw; top: 18vh; transform: rotate(-20deg) translateY(calc(var(--p,0) * -7vh)); }
-.confetti.c3 { background: var(--teal); left: 26vw; bottom: 24vh; transform: rotate(30deg) translateY(calc(var(--p,0) * -3vh)); }
-.confetti.c4 { background: #D9C58F; right: 30vw; bottom: 30vh; transform: rotate(-8deg) translateY(calc(var(--p,0) * -6vh)); }
+.confetti { position: absolute; width: 12px; height: 12px; border-radius: 2px; z-index: 1; opacity: calc(var(--pe, 1) * .85); }
+.confetti.c1 { background: var(--mint); left: 16vw; top: 22vh; transform: rotate(15deg) translateY(calc(var(--pe,1) * -9vh)); }
+.confetti.c2 { background: var(--clay); right: 20vw; top: 18vh; transform: rotate(-20deg) translateY(calc(var(--pe,1) * -14vh)); }
+.confetti.c3 { background: var(--teal); left: 26vw; bottom: 24vh; transform: rotate(30deg) translateY(calc(var(--pe,1) * -7vh)); }
+.confetti.c4 { background: #D9C58F; right: 30vw; bottom: 30vh; transform: rotate(-8deg) translateY(calc(var(--pe,1) * -12vh)); }
 .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 6px; }
 .btn {
   display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
@@ -245,7 +250,7 @@ body {
 .j-static .scene-span { height: auto !important; }
 .j-static .scene-stage { position: relative; height: auto; min-height: 92vh; padding: 96px 0; opacity: 1; }
 .j-static .scene-world { position: absolute; transform: none; }
-.j-static .scene-stage { --p: 1; }
+.j-static .scene-stage { --p: 1; --pe: 1; --copy: 1; }
 .j-static .scene-copy { opacity: 1; transform: none; }
 .j-static .j-hint, .j-static .j-rail { display: none; }
 
