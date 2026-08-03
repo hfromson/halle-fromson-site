@@ -8,6 +8,12 @@
   <meta property="og:title" content="Halle Fromson — creative operations & project management" />
   <meta property="og:description" content="Scroll to fly through a project from brief to finish line." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kyzoss.github.io/halle-fromson-site/" />
+  <meta property="og:image" content="https://kyzoss.github.io/halle-fromson-site/assets/og-card.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://kyzoss.github.io/halle-fromson-site/assets/og-card.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -21,7 +27,10 @@
       --sw-font-body: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
     }
     .alt-links {
-      position: fixed; top: 14px; right: 16px; z-index: 200;
+      position: fixed;
+      right: calc(16px + env(safe-area-inset-right, 0px));
+      bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+      z-index: 200;
       font-family: var(--sw-font-body); font-size: 12.5px; font-weight: 600;
       letter-spacing: .05em; text-transform: uppercase;
     }
@@ -96,8 +105,8 @@
           body: 'That journey is my job — and I’m looking for the next team that ships this way: creative operations, project management, and production coordination.',
           tags: [],
           cta: {
-            primary: { label: 'Connect on LinkedIn', href: 'https://www.linkedin.com/in/halle-fromson-1288aa114/' },
-            secondary: { label: 'Experience & strengths', href: 'resume.html' },
+            primary: { label: 'Experience & strengths', href: 'resume.html' },
+            secondary: { label: 'Connect on LinkedIn', href: 'https://www.linkedin.com/in/halle-fromson-1288aa114/' },
           },
         },
       ],
