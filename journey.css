@@ -1,0 +1,254 @@
+/* ============================================================
+   HALLE FROMSON — "The Journey" cinematic front door
+   Adapted from scroll-world's scene/scrub architecture:
+   full-viewport scenes, per-scene scroll spans, seam dissolves,
+   reduced-motion + small-screen fallback to a stacked flow.
+   Scenes are CSS-built worlds (no video assets, $0 pipeline).
+   ============================================================ */
+
+:root {
+  --paper: #FAF9F6;
+  --ink: #16181D;
+  --ink-soft: #43464E;
+  --hairline: #DDD9CF;
+  --teal: #1F4D46;
+  --mint: #9DBFB8;
+  --sand: #EFE6D8;
+  --clay: #B4653F;
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: auto; }
+body {
+  font-family: var(--sans); background: var(--paper); color: var(--ink);
+  -webkit-font-smoothing: antialiased; line-height: 1.5;
+}
+::selection { background: var(--teal); color: #fff; }
+
+/* ---------- fixed chrome ---------- */
+.j-brand {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 90;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px clamp(18px, 3.5vw, 40px);
+  pointer-events: none;
+}
+.j-brand a { pointer-events: auto; }
+.j-name {
+  font-family: var(--serif); font-weight: 600; font-size: 17px;
+  color: var(--scene-ink, var(--ink)); text-decoration: none; letter-spacing: -0.01em;
+  transition: color .5s;
+}
+.j-skip {
+  font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--scene-ink, var(--ink)); text-decoration: none;
+  border: 1.5px solid currentColor; border-radius: 99px; padding: 8px 15px;
+  opacity: .85; transition: opacity .2s, color .5s;
+}
+.j-skip:hover { opacity: 1; }
+
+/* progress rail (scene nav) */
+.j-rail {
+  position: fixed; right: clamp(12px, 2.5vw, 28px); top: 50%; transform: translateY(-50%);
+  z-index: 90; display: flex; flex-direction: column; gap: 14px;
+}
+.j-rail a { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.j-rail .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: transparent; border: 1.5px solid var(--scene-ink, var(--ink));
+  opacity: .45; transition: all .25s;
+}
+.j-rail .lbl {
+  font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--scene-ink, var(--ink)); opacity: 0; transform: translateX(4px);
+  transition: all .25s;
+}
+.j-rail a.active .dot { background: var(--scene-ink, var(--ink)); opacity: 1; transform: scale(1.25); }
+.j-rail a:hover .lbl, .j-rail a.active .lbl { opacity: .8; transform: none; }
+
+.j-hint {
+  position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 90;
+  font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--scene-ink, var(--ink)); opacity: .6; transition: opacity .4s, color .5s;
+  display: flex; align-items: center; gap: 8px;
+}
+.j-hint::after { content: "↓"; animation: hintbob 1.6s ease-in-out infinite; }
+@keyframes hintbob { 50% { transform: translateY(4px); } }
+.j-hint.gone { opacity: 0; pointer-events: none; }
+
+/* ---------- scene spans & stages ---------- */
+.scene-span { position: relative; }
+.scene-stage {
+  position: sticky; top: 0; height: 100vh; height: 100svh;
+  overflow: hidden; display: grid; place-items: center;
+  background: var(--scene-bg);
+  /* seam dissolve: driven by --p via JS (fade at entry/exit edges) */
+  opacity: var(--fade, 1);
+}
+.scene-world {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  transform: scale(calc(0.94 + var(--p, 0) * 0.16));   /* the "camera dolly" */
+  will-change: transform;
+}
+.scene-copy {
+  position: relative; z-index: 5; max-width: 780px; padding: 0 clamp(22px, 5vw, 48px);
+  text-align: center;
+  opacity: calc((var(--p, 0) - 0.08) * 6);
+  transform: translateY(calc((1 - min(var(--p, 0) * 3, 1)) * 26px));
+}
+.scene-eyebrow {
+  font-size: 12px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--scene-accent); margin-bottom: 18px;
+}
+.scene-num {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  margin-right: 10px; opacity: .75;
+}
+.scene-title {
+  font-family: var(--serif); font-weight: 560; letter-spacing: -0.02em;
+  font-size: clamp(38px, 6.5vw, 74px); line-height: 1.04; text-wrap: balance;
+  color: var(--scene-ink); margin-bottom: 20px;
+}
+.scene-title em { font-style: italic; color: var(--scene-accent); }
+.scene-body {
+  font-size: clamp(15.5px, 1.9vw, 18px); color: var(--scene-ink-soft);
+  max-width: 54ch; margin: 0 auto 22px; line-height: 1.6;
+}
+.scene-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.scene-tags span {
+  font-size: 11.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--scene-ink); border: 1px solid color-mix(in srgb, var(--scene-ink) 35%, transparent);
+  border-radius: 99px; padding: 6px 13px; background: color-mix(in srgb, var(--scene-bg) 60%, transparent);
+}
+
+/* grain over everything, very quiet */
+.grain { position: fixed; inset: 0; z-index: 80; pointer-events: none; opacity: .05; mix-blend-mode: multiply; }
+
+/* ============ SCENE 1 — THE BRIEF (bone paper) ============ */
+.s-brief { --scene-bg: var(--paper); --scene-ink: var(--ink); --scene-ink-soft: var(--ink-soft); --scene-accent: var(--teal); }
+.s-brief .big-num {
+  position: absolute; right: -2vw; bottom: -6vh; z-index: 1;
+  font-family: var(--serif); font-weight: 700; font-size: 46vh; line-height: 1;
+  color: var(--ink); opacity: .045;
+  transform: translateY(calc((1 - var(--p, 0)) * 6vh));
+}
+.paper-sheet {
+  position: absolute; z-index: 2; width: min(300px, 32vw); aspect-ratio: 0.77;
+  background: #fff; border: 1px solid var(--hairline); border-radius: 6px;
+  box-shadow: 0 30px 60px -30px rgba(22,24,29,.35);
+  padding: 22px 20px; display: flex; flex-direction: column; gap: 10px;
+}
+.paper-sheet i { display: block; height: 9px; border-radius: 4px; background: #ECE8DE; }
+.paper-sheet i.w40 { width: 40%; background: var(--mint); }
+.paper-sheet i.w80 { width: 80%; } .paper-sheet i.w65 { width: 65%; } .paper-sheet i.w72 { width: 72%; }
+.sheet-1 { left: 8vw; top: 16vh; transform: rotate(-7deg) translateY(calc(var(--p,0) * -5vh)); }
+.sheet-2 { right: 10vw; top: 54vh; transform: rotate(5deg) translateY(calc(var(--p,0) * -9vh)); }
+@media (max-width: 1100px) { .sheet-2 { display: none; } }
+
+/* ============ SCENE 2 — THE PLAN (blueprint teal) ============ */
+.s-plan { --scene-bg: #143A34; --scene-ink: #F2F5F1; --scene-ink-soft: #C4D2CC; --scene-accent: var(--mint); }
+.s-plan .blueprint {
+  position: absolute; inset: -10%;
+  background:
+    repeating-linear-gradient(0deg, rgba(157,191,184,.12) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(90deg, rgba(157,191,184,.12) 0 1px, transparent 1px 72px);
+  transform: translateY(calc(var(--p, 0) * -4vh));
+}
+.gantt {
+  position: absolute; z-index: 2; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(680px, 84vw); display: flex; flex-direction: column; gap: 14px; opacity: .5;
+}
+.gantt .bar { height: 16px; border-radius: 3px; background: var(--mint); transform-origin: left; }
+.gantt .bar:nth-child(1) { width: 58%; transform: scaleX(clamp(0, calc((var(--p,0) - .05) * 2.2), 1)); }
+.gantt .bar:nth-child(2) { width: 74%; margin-left: 9%;  background: #7FA89F; transform: scaleX(clamp(0, calc((var(--p,0) - .18) * 2.2), 1)); }
+.gantt .bar:nth-child(3) { width: 46%; margin-left: 22%; background: #6A968C; transform: scaleX(clamp(0, calc((var(--p,0) - .31) * 2.2), 1)); }
+.gantt .bar:nth-child(4) { width: 61%; margin-left: 33%; background: var(--sand); transform: scaleX(clamp(0, calc((var(--p,0) - .44) * 2.2), 1)); }
+.gantt .milestone { width: 13px; height: 13px; border-radius: 3px; transform: rotate(45deg); background: var(--sand); margin-left: 78%; opacity: clamp(0, calc((var(--p,0) - .6) * 4), 1); }
+
+/* ============ SCENE 3 — PRODUCTION (warm studio) ============ */
+.s-prod { --scene-bg: var(--sand); --scene-ink: #221C14; --scene-ink-soft: #58503F; --scene-accent: var(--clay); }
+.card-col { position: absolute; z-index: 2; top: -12vh; display: flex; flex-direction: column; gap: 18px; width: min(200px, 22vw); }
+.col-a { left: 5vw;  transform: translateY(calc(var(--p, 0) * -16vh)); }
+.col-b { right: 5vw; top: -4vh; transform: translateY(calc(var(--p, 0) * -26vh)); }
+.asset-card {
+  background: #fff; border: 1px solid #E2D8C6; border-radius: 8px; padding: 13px 14px;
+  box-shadow: 0 18px 40px -24px rgba(34,28,20,.4);
+  font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #58503F;
+}
+.asset-card b { display: block; font-family: var(--serif); font-size: 14px; letter-spacing: 0; text-transform: none; color: #221C14; margin-bottom: 3px; }
+.asset-card .ok { color: var(--teal); }
+.asset-card .wip { color: var(--clay); }
+@media (max-width: 900px) { .col-a, .col-b { width: 30vw; } .col-b { display: none; } }
+
+/* ============ SCENE 4 — THE REVIEW (ink night) ============ */
+.s-review { --scene-bg: #131519; --scene-ink: #F2F1EC; --scene-ink-soft: #A9ACB4; --scene-accent: var(--mint); }
+.versions { position: absolute; z-index: 2; bottom: 12vh; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
+.versions span {
+  font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .08em;
+  color: #6E7280; border: 1.5px solid #33363E; border-radius: 99px; padding: 8px 16px;
+  transition: none;
+}
+.versions span:nth-child(1) { opacity: clamp(0, calc(var(--p,0) * 5), 1); }
+.versions span:nth-child(2) { opacity: clamp(0, calc((var(--p,0) - .15) * 5), 1); }
+.versions span:nth-child(3) { opacity: clamp(0, calc((var(--p,0) - .3) * 5), 1); }
+.versions span.final {
+  color: var(--scene-bg); background: var(--mint); border-color: var(--mint);
+  opacity: clamp(0, calc((var(--p,0) - .5) * 4), 1);
+  transform: scale(clamp(.7, calc(.7 + var(--p,0) * .45), 1.08));
+}
+.stamp {
+  position: absolute; z-index: 1; top: 12vh; right: 8vw;
+  font-family: var(--serif); font-weight: 700; font-size: clamp(60px, 9vw, 120px); line-height: 1;
+  color: transparent; -webkit-text-stroke: 2px rgba(157,191,184,.28);
+  transform: rotate(-9deg) scale(calc(1.25 - var(--p, 0) * .25));
+  opacity: clamp(0, calc((var(--p,0) - .35) * 3), 1);
+}
+
+/* ============ SCENE 5 — THE FINISH LINE (light) ============ */
+.s-finish { --scene-bg: var(--paper); --scene-ink: var(--ink); --scene-ink-soft: var(--ink-soft); --scene-accent: var(--teal); }
+.confetti { position: absolute; width: 10px; height: 10px; border-radius: 2px; z-index: 1; opacity: calc(var(--p, 0) * .8); }
+.confetti.c1 { background: var(--mint); left: 16vw; top: 22vh; transform: rotate(15deg) translateY(calc(var(--p,0) * -4vh)); }
+.confetti.c2 { background: var(--clay); right: 20vw; top: 18vh; transform: rotate(-20deg) translateY(calc(var(--p,0) * -7vh)); }
+.confetti.c3 { background: var(--teal); left: 26vw; bottom: 24vh; transform: rotate(30deg) translateY(calc(var(--p,0) * -3vh)); }
+.confetti.c4 { background: #D9C58F; right: 30vw; bottom: 30vh; transform: rotate(-8deg) translateY(calc(var(--p,0) * -6vh)); }
+.cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 6px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+  font-size: 15px; font-weight: 600; padding: 14px 26px; border-radius: 4px;
+  transition: transform .15s, background .15s, color .15s, border-color .15s;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--ink); color: var(--paper); border: 1.5px solid var(--ink); }
+.btn-primary:hover { background: var(--teal); border-color: var(--teal); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--hairline); }
+.btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+.receipts {
+  margin-top: 34px; font-size: 12.5px; color: var(--ink-soft); letter-spacing: .02em;
+}
+.receipts b { color: var(--ink); font-weight: 600; }
+
+/* ---------- footer ---------- */
+.j-foot {
+  background: var(--paper); border-top: 1px solid var(--hairline);
+  padding: 22px clamp(18px, 3.5vw, 40px); font-size: 12.5px; color: #7A7D85;
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+.j-foot a { color: var(--teal); text-decoration: none; font-weight: 600; }
+
+/* ============================================================
+   FALLBACK MODE — reduced motion, small screens, no-JS.
+   Scenes stack as full designed panels; no pinning, no scrub.
+   The <html> gets .j-static from JS (or the media queries below).
+   ============================================================ */
+.j-static .scene-span { height: auto !important; }
+.j-static .scene-stage { position: relative; height: auto; min-height: 92vh; padding: 96px 0; opacity: 1; }
+.j-static .scene-world { position: absolute; transform: none; }
+.j-static .scene-stage { --p: 1; }
+.j-static .scene-copy { opacity: 1; transform: none; }
+.j-static .j-hint, .j-static .j-rail { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .j-hint::after { animation: none; }
+}
