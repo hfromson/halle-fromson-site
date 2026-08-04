@@ -18,7 +18,7 @@ const CONTENT = {
       "Project manager for creative teams. Planning, logistics, and coordination that get complex creative work to the finish line.",
     linkedin: "https://www.linkedin.com/in/halle-fromson-1288aa114/",
     // VERIFY: add a contact email if Halle wants one public. Leave "" to hide.
-    email: "hallefromson@gmail.com",
+    email: hallefromson@gmail.com,
     location: "Los Angeles, CA",
   },
 
