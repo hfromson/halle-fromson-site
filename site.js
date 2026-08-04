@@ -68,11 +68,17 @@
   $("#app-heading").textContent = C.approach.heading;
   $("#app-list").innerHTML = C.approach.items
     .map((t) => {
-      const i = t.indexOf("—");
-      // Bold the lead phrase before the first em dash when present.
-      return i > 0
-        ? `<li class="reveal"><b>${esc(t.slice(0, i).trim())}</b> — ${esc(t.slice(i + 1).trim())}</li>`
-        : `<li class="reveal">${esc(t)}</li>`;
+      const dashI = t.indexOf("—");
+      if (dashI > 0) {
+        // Bold the lead phrase before the first em dash when present.
+        return `<li class="reveal"><b>${esc(t.slice(0, dashI).trim())}</b> — ${esc(t.slice(dashI + 1).trim())}</li>`;
+      }
+      const periodI = t.indexOf(". ");
+      if (periodI > 0) {
+        // Otherwise bold the lead sentence before the first ". " when present.
+        return `<li class="reveal"><b>${esc(t.slice(0, periodI + 1).trim())}</b> ${esc(t.slice(periodI + 2).trim())}</li>`;
+      }
+      return `<li class="reveal">${esc(t)}</li>`;
     })
     .join("");
 
@@ -88,6 +94,11 @@
   const cp = $("#ct-cta");
   cp.querySelector("span").textContent = C.contact.ctaPrimary.label;
   cp.href = C.contact.ctaPrimary.href;
+  const cs = $("#ct-cta-secondary");
+  if (cs && C.contact.ctaSecondary) {
+    cs.querySelector("span").textContent = C.contact.ctaSecondary.label;
+    cs.href = C.contact.ctaSecondary.href;
+  }
   $("#footer-line").textContent = C.footer.line;
 
   /* scroll reveals — no-op when reduced motion is preferred */
