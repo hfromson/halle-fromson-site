@@ -51,7 +51,7 @@ const CONTENT = {
         company: "Arsonal Design",
         role: "Project Manager",
         location: "Los Angeles, CA",
-        dates: "[Start year] – Present", // FILL: exact dates from LinkedIn
+        dates: "February 2023 – Present",
         blurb:
           "Entertainment advertising agency — key art and campaign creative for studios, networks, and streamers.",
         bullets: [
@@ -64,27 +64,44 @@ const CONTENT = {
       },
       {
         company: "The Pure Imagination Party Company",
-        role: "[Role title]", // FILL from LinkedIn
-        location: "[Location]",
-        dates: "[Dates]",
+        role: "Character Actor, Mascot & Party Host",
+        location: "Los Angeles, CA",
+        dates: "September 2019 – January 2025",
         blurb:
           "Live events and experience production.",
         bullets: [
-          // VERIFY: placeholder framing — replace with Halle's actual responsibilities.
-          "Planned and produced live experiences where the deadline is an event date that cannot move.",
-          "Ran vendor coordination, logistics, and day-of execution under real-time pressure.",
+          // VERIFY: rewritten to match actual role — Halle to confirm/adjust.
+          "Performed as a character actor, mascot, and party host at live events, staying in character while managing pacing, safety, and guest experience in real time.",
+          "Worked directly with clients and families on-site, reading the room and adapting activities to keep events running smoothly under a fixed, non-negotiable timeline.",
+          "Coordinated with event staff and clients before and during each booking to make sure logistics, costuming, and scheduling came together on the day.",
         ],
       },
       {
         company: "Real Genius Entertainment",
-        role: "[Role title]", // FILL from LinkedIn
-        location: "[Location]",
-        dates: "[Dates]",
+        role: "Client Relations Manager (Freelance)",
+        location: "Los Angeles, CA",
+        dates: "January – February 2023",
         blurb:
           "Entertainment production company.",
         bullets: [
-          // VERIFY: placeholder framing — replace with Halle's actual responsibilities.
-          "Supported production workflows and kept schedules, materials, and communications organized across projects.",
+          // VERIFY: rewritten to match actual role — Halle to confirm/adjust.
+          "Managed client relationships and communications on a freelance basis, serving as the day-to-day point of contact between the company and its clients.",
+          "Tracked client needs, requests, invoices, and follow-ups to keep bookings moving and expectations aligned.",
+        ],
+      },
+      {
+        company: "Kol Tikvah",
+        role: "Experiential Education Coordinator",
+        location: "Los Angeles, CA",
+        dates: "June 2021 – January 2023",
+        blurb:
+          "Full-time · religious school, K–12 community programming.",
+        bullets: [
+          "Supported the School Director with day-to-day administrative operations, keeping programs, schedules, and communications running smoothly.",
+          "Designed and delivered curriculum for students across six grade levels, adapting plans and pacing to a range of ages and learning needs.",
+          "Owned the planning, promotion, and execution of weekly community events end to end — from concept through day-of logistics.",
+          "Managed program budgets, keeping spending on track and the school's finances healthy.",
+          "Served as the daily point of contact for parents, teachers, and staff, keeping every stakeholder informed and aligned.",
         ],
       },
     ],
