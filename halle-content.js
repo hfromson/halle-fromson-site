@@ -17,8 +17,7 @@ const CONTENT = {
     description:
       "Project manager for creative teams. Planning, logistics, and coordination that get complex creative work to the finish line.",
     linkedin: "https://www.linkedin.com/in/halle-fromson-1288aa114/",
-    // VERIFY: add a contact email if Halle wants one public. Leave "" to hide.
-    email: hallefromson@gmail.com,
+    email: "hallefromson@gmail.com",
     location: "Los Angeles, CA",
   },
 
@@ -151,8 +150,9 @@ const CONTENT = {
     eyebrow: "Contact",
     heading: "Hiring for creative ops, project management, or production?",
     body:
-      "I'm open to roles in creative operations, project management, and production coordination: agencies, brands, retail media, and influencer or boutique teams. The fastest way to reach me is LinkedIn.",
+      "I'm open to roles in creative operations, project management, and production coordination: agencies, brands, retail media, and influencer or boutique teams. The fastest way to reach me is via LinkedIn or email.",
     ctaPrimary: { label: "Connect on LinkedIn", href: "https://www.linkedin.com/in/halle-fromson-1288aa114/" },
+    ctaSecondary: { label: "Email me", href: "mailto:hallefromson@gmail.com" },
   },
 
   footer: {
