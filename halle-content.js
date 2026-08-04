@@ -18,7 +18,7 @@ const CONTENT = {
       "Project manager for creative teams. Planning, logistics, and coordination that get complex creative work to the finish line.",
     linkedin: "https://www.linkedin.com/in/halle-fromson-1288aa114/",
     // VERIFY: add a contact email if Halle wants one public. Leave "" to hide.
-    email: "",
+    email: "hallefromson@gmail.com",
     location: "Los Angeles, CA",
   },
 
@@ -39,7 +39,7 @@ const CONTENT = {
       // VERIFY: grounded in public profile + provided positioning; Halle to confirm tone.
       "I've spent my career inside creative teams — most recently in entertainment advertising — owning the unglamorous machinery that great work depends on: schedules, scopes, reviews, approvals, asset handoffs, and the hundred small decisions that keep a project on track.",
       "My strength is structure. I break ambitious briefs into plans people can actually execute, keep stakeholders aligned as things change, and make sure nothing falls through the cracks between concept and final delivery. I'm client-capable in the room and relentless behind the scenes.",
-      "The tools change by team — the discipline doesn't. I'm at home in fast-moving environments where priorities shift daily and the work still has to ship.",
+      "The tools change by team; the discipline doesn't. I'm at home in fast-moving environments where priorities shift daily and the work still has to ship.",
     ],
   },
 
@@ -119,11 +119,11 @@ const CONTENT = {
     items: [
       { title: "Operational rigor", body: "Clean scopes, honest timelines, and plans built to survive contact with reality." },
       { title: "Project planning", body: "Ambitious briefs broken into sequenced, ownable, trackable work." },
-      { title: "Stakeholder coordination", body: "Clients, creatives, and vendors aligned — and kept aligned as things change." },
+      { title: "Stakeholder coordination", body: "Clients, creatives, and vendors aligned, and kept aligned as things change." },
       { title: "Asset & workflow management", body: "Versioning, approvals, specs, and handoffs handled so nothing gets lost." },
       { title: "Timeline ownership", body: "Deadlines tracked, dependencies surfaced early, slippage caught before it costs anything." },
       { title: "Process improvement", body: "Repeat friction turned into better systems, templates, and defaults." },
-      { title: "Adaptability", body: "Comfortable across industries and team shapes — the discipline travels." },
+      { title: "Adaptability", body: "Comfortable across industries and team shapes. The discipline travels." },
     ],
   },
 
@@ -131,11 +131,11 @@ const CONTENT = {
     eyebrow: "How I work",
     heading: "What teams get with me in the room",
     items: [
-      "Organized under pressure — the more moving pieces, the more useful I am.",
-      "Clear communicator — people always know status, owner, and next step.",
+      "Organized under pressure. The more moving pieces, the more useful I am.",
+      "Clear communicator. People always know status, owner, and next step.",
       "Detail-oriented without losing the plot — I track the small stuff because it protects the big stuff.",
-      "Calm escalation — I flag risks early, with options, not alarms.",
-      "Strong executor — I care about finished, not just planned.",
+      "Calm escalation. I flag risks early, with options, not alarms.",
+      "Strong executor. I care about finished, not just planned.",
     ],
   },
 
@@ -151,7 +151,7 @@ const CONTENT = {
     eyebrow: "Contact",
     heading: "Hiring for creative ops, project management, or production?",
     body:
-      "I'm open to roles in creative operations, project management, and production coordination — agencies, brands, retail media, and influencer or boutique teams. The fastest way to reach me is LinkedIn.",
+      "I'm open to roles in creative operations, project management, and production coordination: agencies, brands, retail media, and influencer or boutique teams. The fastest way to reach me is LinkedIn.",
     ctaPrimary: { label: "Connect on LinkedIn", href: "https://www.linkedin.com/in/halle-fromson-1288aa114/" },
   },
 
