@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Halle Fromson — fly through a project, brief to finish line</title>
-  <meta name="description" content="Scroll to fly through a creative project the way Halle Fromson runs one: brief, plan, production, review, delivery. Creative operations and project management." />
-  <meta property="og:title" content="Halle Fromson — creative operations & project management" />
-  <meta property="og:description" content="Scroll to fly through a project from brief to finish line." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Halle Fromson — Creative Operations & Project Management</title>
+  <meta name="description" content="Project manager for creative teams. Planning, logistics, and coordination that get complex creative work to the finish line." />
+  <meta property="og:title" content="Halle Fromson — Creative Operations & Project Management" />
+  <meta property="og:description" content="Planning, logistics, and coordination that get creative work to the finish line." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hallefromson.com/" />
   <meta property="og:image" content="https://hallefromson.com/assets/og-card.jpg" />
@@ -16,106 +16,121 @@
   <meta name="twitter:image" content="https://hallefromson.com/assets/og-card.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root, .sw-root {
-      --sw-bg: #FAF9F6;            /* == the stills' background — seamless posters */
-      --sw-ink: #16181D;
-      --sw-ink-soft: #43464E;
-      --sw-accent: #1F4D46;
-      --sw-font-display: "Fraunces", Georgia, serif;
-      --sw-font-body: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    }
-    .alt-links {
-      position: fixed;
-      right: calc(16px + env(safe-area-inset-right, 0px));
-      bottom: calc(18px + env(safe-area-inset-bottom, 0px));
-      z-index: 200;
-      font-family: var(--sw-font-body); font-size: 12.5px; font-weight: 600;
-      letter-spacing: .05em; text-transform: uppercase;
-    }
-    .alt-links a {
-      color: var(--sw-ink); text-decoration: none; border: 1.5px solid currentColor;
-      border-radius: 99px; padding: 8px 14px; background: rgba(250,249,246,.85);
-    }
-    .alt-links a:hover { color: var(--sw-accent); }
-    @media (max-width: 860px) {
-      .sw-scene__video, .sw-scene__still { object-fit: contain !important; object-position: center 45% !important; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="top"></div>
-  <nav class="alt-links" aria-label="Alternate version">
-    <a href="resume.html">See my work →</a>
-  </nav>
-  <div id="world"></div>
 
-  <script src="scrub-engine.js"></script>
-  <script>
-    mountScrollWorld(document.getElementById('world'), {
-      brand: { name: 'Halle Fromson', href: '#top' },
-      hint: 'scroll the project',
-      nav: true,
-      atmosphere: true,
-      diveScroll: 2.0,
-      connScroll: 1.3,
-      sections: [
-        {
-          id: 'brief', label: 'The brief',
-          still: 'assets/brief.webp', clip: 'assets/vid/brief.mp4', clipMobile: 'assets/vid/brief-m.mp4',
-          accent: '#1F4D46',
-          scroll: 2.3, linger: 0.45,
-          eyebrow: 'Creative operations · Project management',
-          title: 'Every project starts as a pile of ambition.',
-          body: 'A brief, a deadline, twelve opinions, and a hundred moving pieces. This is a short story about what happens next — and the person who keeps it moving.',
-          tags: [],
-        },
-        {
-          id: 'plan', label: 'The plan',
-          still: 'assets/plan.webp', clip: 'assets/vid/plan.mp4', clipMobile: 'assets/vid/plan-m.mp4',
-          accent: '#2E6B5E',
-          eyebrow: 'The plan',
-          title: 'First, the chaos gets a spine.',
-          body: 'Scopes, timelines, owners, dependencies. I break ambitious briefs into plans people can actually execute — and keep the plan honest as everything changes.',
-          tags: ['Scopes', 'Timelines', 'Dependencies'],
-        },
-        {
-          id: 'production', label: 'Production',
-          still: 'assets/production.webp', clip: 'assets/vid/production.mp4', clipMobile: 'assets/vid/production-m.mp4',
-          accent: '#B4653F',
-          eyebrow: 'Production',
-          title: 'Then the work starts flying.',
-          body: 'Designers, directors, clients, vendors — versions and feedback everywhere. At Arsonal Design in LA I coordinate entertainment campaigns exactly like this: nothing lost between hands.',
-          tags: ['Versioning', 'Reviews', 'Trafficking'],
-        },
-        {
-          id: 'review', label: 'The review',
-          still: 'assets/review.webp', clip: 'assets/vid/review.mp4', clipMobile: 'assets/vid/review-m.mp4',
-          accent: '#1F4D46',
-          eyebrow: 'The review',
-          title: 'Feedback lands. Nothing slips.',
-          body: 'Rounds run on time, decisions get captured, risks get flagged early — with options, not alarms. Clients see calm; the team gets clarity.',
-          tags: ['Approvals', 'Redlines', 'Escalation'],
-        },
-        {
-          id: 'finish', label: 'Finish line',
-          still: 'assets/finish.webp', clip: 'assets/vid/finish.mp4', clipMobile: 'assets/vid/finish-m.mp4',
-          accent: '#B4653F',
-          scroll: 2.5, linger: 0.5,
-          eyebrow: 'The finish line',
-          title: 'Delivered. On time. Intact.',
-          body: 'That journey is my job — and I’m looking for the next team that ships this way: creative operations, project management, and production coordination.',
-          tags: [],
-          cta: {
-            primary: { label: 'See my work', href: 'resume.html' },
-            secondary: { label: 'Connect on LinkedIn', href: 'https://www.linkedin.com/in/halle-fromson-1288aa114/' },
-          },
-        },
-      ],
-      connectors: ['assets/vid/conn1.mp4', 'assets/vid/conn2.mp4', 'assets/vid/conn3.mp4', 'assets/vid/conn4.mp4'],
-      connectorsMobile: ['assets/vid/conn1-m.mp4', 'assets/vid/conn2-m.mp4', 'assets/vid/conn3-m.mp4', 'assets/vid/conn4-m.mp4'],
-    });
-  </script>
+  <nav class="nav" aria-label="Site">
+    <div class="wrap nav-in">
+      <a href="#top" class="nav-name" id="nav-name">Halle Fromson</a>
+      <div class="nav-links">
+        <a href="journey.html" style="color:var(--accent)">← The journey</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#strengths">Strengths</a>
+        <a href="#approach">How I work</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap hero-in">
+      <div class="hero-copy">
+        <p class="eyebrow reveal" id="hero-eyebrow"></p>
+        <h1 class="reveal" id="hero-headline"></h1>
+        <p class="sub reveal" id="hero-sub"></p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary" id="hero-cta-primary" href="#experience"></a>
+          <a class="btn btn-ghost" id="hero-cta-secondary" href="#" target="_blank" rel="noopener">
+            <span></span>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-photo reveal">
+        <img src="assets/halle-portrait.jpg" alt="Halle Fromson" width="480" height="751" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="about" id="about">
+      <div class="wrap">
+        <p class="eyebrow reveal" id="about-eyebrow"></p>
+        <h2 class="reveal" id="about-heading"></h2>
+        <div class="about-grid reveal" id="about-body"></div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="wrap">
+        <p class="eyebrow reveal" id="exp-eyebrow"></p>
+        <h2 class="reveal" id="exp-heading"></h2>
+        <div id="exp-roles"></div>
+        <div class="edu reveal" id="exp-edu"></div>
+      </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+      <div class="wrap">
+        <p class="eyebrow reveal" id="pf-eyebrow"></p>
+        <h2 class="reveal" id="pf-heading"></h2>
+        <div class="pf-grid" id="pf-grid"></div>
+      </div>
+    </section>
+
+    <section class="strengths" id="strengths">
+      <div class="wrap">
+        <p class="eyebrow reveal" id="str-eyebrow"></p>
+        <h2 class="reveal" id="str-heading"></h2>
+        <div class="str-grid" id="str-grid"></div>
+      </div>
+    </section>
+
+    <section class="approach" id="approach">
+      <div class="wrap">
+        <p class="eyebrow reveal" id="app-eyebrow"></p>
+        <h2 class="reveal" id="app-heading"></h2>
+        <ul id="app-list"></ul>
+      </div>
+    </section>
+
+    <section class="forward" id="forward">
+      <div class="wrap">
+        <div class="forward-in reveal">
+          <p class="eyebrow" id="fwd-eyebrow"></p>
+          <h2 id="fwd-heading"></h2>
+          <p id="fwd-body"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <p class="eyebrow reveal" id="ct-eyebrow"></p>
+        <h2 class="reveal" id="ct-heading"></h2>
+        <p class="reveal" id="ct-body"></p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary" id="ct-cta" href="#" target="_blank" rel="noopener">
+            <span></span>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+          <a class="btn btn-ghost" id="ct-cta-secondary" href="#">
+            <span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap"><span id="footer-line"></span></div>
+  </footer>
+
+  <script src="halle-content.js"></script>
+  <script src="site.js"></script>
 </body>
 </html>

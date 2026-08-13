@@ -1,5 +1,5 @@
 /* ============================================================
-   HALLE FROMSON â€” editorial candidate microsite
+   HALLE FROMSON — editorial candidate microsite
    Palette: bone paper / near-black ink / deep teal accent
    Type: Fraunces (display) + Inter (body), system fallbacks
    ============================================================ */
@@ -128,7 +128,7 @@ h2 {
 .role-blurb { font-size: 14px; color: var(--muted); margin-bottom: 12px; font-style: italic; }
 .role ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .role li { padding-left: 20px; position: relative; color: var(--ink-soft); font-size: 15px; }
-.role li::before { content: "â€”"; position: absolute; left: 0; color: var(--accent); }
+.role li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
 .edu {
   margin-top: 34px; padding: 20px 24px; background: var(--paper); border: 1px solid var(--hairline);
   border-radius: 6px; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline;
@@ -181,7 +181,7 @@ h2 {
   border-top: 1px solid rgba(250,249,246,.14); color: #D8D9DC;
 }
 .approach li:last-child { border-bottom: 1px solid rgba(250,249,246,.14); }
-.approach li::before { content: "â†’"; position: absolute; left: 0; color: #9DBFB8; }
+.approach li::before { content: "→"; position: absolute; left: 0; color: #9DBFB8; }
 .approach li b { color: var(--paper); font-weight: 600; }
 
 /* ---------- forward ---------- */

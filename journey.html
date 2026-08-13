@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Halle Fromson — fly through a project, brief to finish line</title>
+  <meta name="description" content="Scroll to fly through a creative project the way Halle Fromson runs one: brief, plan, production, review, delivery. Creative operations and project management." />
+  <meta property="og:title" content="Halle Fromson — creative operations & project management" />
+  <meta property="og:description" content="Scroll to fly through a project from brief to finish line." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hallefromson.com/journey.html" />
+  <meta property="og:image" content="https://hallefromson.com/assets/og-card.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://hallefromson.com/assets/og-card.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root, .sw-root {
+      --sw-bg: #FAF9F6;            /* == the stills' background — seamless posters */
+      --sw-ink: #16181D;
+      --sw-ink-soft: #43464E;
+      --sw-accent: #1F4D46;
+      --sw-font-display: "Fraunces", Georgia, serif;
+      --sw-font-body: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    .alt-links {
+      position: fixed;
+      right: calc(16px + env(safe-area-inset-right, 0px));
+      bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+      z-index: 200;
+      font-family: var(--sw-font-body); font-size: 12.5px; font-weight: 600;
+      letter-spacing: .05em; text-transform: uppercase;
+    }
+    .alt-links a {
+      color: var(--sw-ink); text-decoration: none; border: 1.5px solid currentColor;
+      border-radius: 99px; padding: 8px 14px; background: rgba(250,249,246,.85);
+    }
+    .alt-links a:hover { color: var(--sw-accent); }
+    @media (max-width: 860px) {
+      .sw-scene__video, .sw-scene__still { object-fit: contain !important; object-position: center 45% !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+  <nav class="alt-links" aria-label="Alternate version">
+    <a href="index.html">See my work →</a>
+  </nav>
+  <div id="world"></div>
+
+  <script src="scrub-engine.js"></script>
+  <script>
+    mountScrollWorld(document.getElementById('world'), {
+      brand: { name: 'Halle Fromson', href: '#top' },
+      hint: 'scroll the project',
+      nav: true,
+      atmosphere: true,
+      diveScroll: 2.0,
+      connScroll: 1.3,
+      sections: [
+        {
+          id: 'brief', label: 'The brief',
+          still: 'assets/brief.webp', clip: 'assets/vid/brief.mp4', clipMobile: 'assets/vid/brief-m.mp4',
+          accent: '#1F4D46',
+          scroll: 2.3, linger: 0.45,
+          eyebrow: 'Creative operations · Project management',
+          title: 'Every project starts as a pile of ambition.',
+          body: 'A brief, a deadline, twelve opinions, and a hundred moving pieces. This is a short story about what happens next — and the person who keeps it moving.',
+          tags: [],
+        },
+        {
+          id: 'plan', label: 'The plan',
+          still: 'assets/plan.webp', clip: 'assets/vid/plan.mp4', clipMobile: 'assets/vid/plan-m.mp4',
+          accent: '#2E6B5E',
+          eyebrow: 'The plan',
+          title: 'First, the chaos gets a spine.',
+          body: 'Scopes, timelines, owners, dependencies. I break ambitious briefs into plans people can actually execute — and keep the plan honest as everything changes.',
+          tags: ['Scopes', 'Timelines', 'Dependencies'],
+        },
+        {
+          id: 'production', label: 'Production',
+          still: 'assets/production.webp', clip: 'assets/vid/production.mp4', clipMobile: 'assets/vid/production-m.mp4',
+          accent: '#B4653F',
+          eyebrow: 'Production',
+          title: 'Then the work starts flying.',
+          body: 'Designers, directors, clients, vendors — versions and feedback everywhere. At Arsonal Design in LA I coordinate entertainment campaigns exactly like this: nothing lost between hands.',
+          tags: ['Versioning', 'Reviews', 'Trafficking'],
+        },
+        {
+          id: 'review', label: 'The review',
+          still: 'assets/review.webp', clip: 'assets/vid/review.mp4', clipMobile: 'assets/vid/review-m.mp4',
+          accent: '#1F4D46',
+          eyebrow: 'The review',
+          title: 'Feedback lands. Nothing slips.',
+          body: 'Rounds run on time, decisions get captured, risks get flagged early — with options, not alarms. Clients see calm; the team gets clarity.',
+          tags: ['Approvals', 'Redlines', 'Escalation'],
+        },
+        {
+          id: 'finish', label: 'Finish line',
+          still: 'assets/finish.webp', clip: 'assets/vid/finish.mp4', clipMobile: 'assets/vid/finish-m.mp4',
+          accent: '#B4653F',
+          scroll: 2.5, linger: 0.5,
+          eyebrow: 'The finish line',
+          title: 'Delivered. On time. Intact.',
+          body: 'That journey is my job — and I’m looking for the next team that ships this way: creative operations, project management, and production coordination.',
+          tags: [],
+          cta: {
+            primary: { label: 'See my work', href: 'index.html' },
+            secondary: { label: 'Connect on LinkedIn', href: 'https://www.linkedin.com/in/halle-fromson-1288aa114/' },
+          },
+        },
+      ],
+      connectors: ['assets/vid/conn1.mp4', 'assets/vid/conn2.mp4', 'assets/vid/conn3.mp4', 'assets/vid/conn4.mp4'],
+      connectorsMobile: ['assets/vid/conn1-m.mp4', 'assets/vid/conn2-m.mp4', 'assets/vid/conn3-m.mp4', 'assets/vid/conn4-m.mp4'],
+    });
+  </script>
+</body>
+</html>
