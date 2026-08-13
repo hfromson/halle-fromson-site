@@ -158,6 +158,7 @@ const CONTENT = {
       { title: "Vanished", studio: "MGM+", slug: "vanished" },
       { title: "The Ashlyn Harris Story", studio: "Roku", slug: "the-ashlyn-harris-story" },
       { title: "America's Top 25 Female Athletes", studio: "Roku", slug: "americas-top-25-female-athletes" },
+      { title: "IT: Welcome to Derry", studio: "HBO Max", slug: "welcome-to-derry" },
     ],
   },
 
