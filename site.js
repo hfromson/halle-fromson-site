@@ -56,6 +56,23 @@
   const e = C.experience.education;
   $("#exp-edu").innerHTML = `<b>${esc(e.school)}</b> ${esc(e.degree)} · ${esc(e.detail)} <span class="dates">${esc(e.dates)}</span>`;
 
+  /* portfolio */
+  if (C.portfolio) {
+    $("#pf-eyebrow").textContent = C.portfolio.eyebrow;
+    $("#pf-heading").textContent = C.portfolio.heading;
+    $("#pf-grid").innerHTML = C.portfolio.items
+      .map(
+        (it) => `
+        <div class="pf-card reveal">
+          <div class="pf-art" style="background-image:url('assets/portfolio/${esc(it.slug)}.jpg')">
+            <span class="pf-art-label">${esc(it.title)}</span>
+          </div>
+          <div class="pf-meta"><h3>${esc(it.title)}</h3><span class="pf-studio">${esc(it.studio)}</span></div>
+        </div>`
+      )
+      .join("");
+  }
+
   /* strengths */
   $("#str-eyebrow").textContent = C.strengths.eyebrow;
   $("#str-heading").textContent = C.strengths.heading;
