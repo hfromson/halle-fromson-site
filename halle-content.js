@@ -35,10 +35,9 @@ const CONTENT = {
     eyebrow: "About",
     heading: "The person who keeps the work moving",
     paragraphs: [
-      // VERIFY: grounded in public profile + provided positioning; Halle to confirm tone.
-      "I've spent my career inside creative teams — most recently in entertainment advertising — owning the unglamorous machinery that great work depends on: schedules, scopes, reviews, approvals, asset handoffs, and the hundred small decisions that keep a project on track.",
-      "My strength is structure. I break ambitious briefs into plans people can actually execute, keep stakeholders aligned as things change, and make sure nothing falls through the cracks between concept and final delivery. I'm client-capable in the room and relentless behind the scenes.",
-      "The tools change by team; the discipline doesn't. I'm at home in fast-moving environments where priorities shift daily and the work still has to ship.",
+      "I've spent my career inside creative teams — most recently in entertainment advertising, managing integrated campaigns for clients like Focus Features, Netflix, MGM+, and Roku — owning the unglamorous machinery that great work depends on: schedules, scopes, reviews, approvals, asset handoffs, and the hundred small decisions that keep a project on track.",
+      "My strength is structure. I break ambitious briefs into plans people can actually execute, manage six-figure project budgets without losing sight of the creative, and keep stakeholders aligned as things change. I'm client-capable in the room and relentless behind the scenes.",
+      "The tools change by team; the discipline doesn't. I work in Notion, Microsoft and Google Workspace suites, Adobe Creative Cloud, and Slack, and I'm at home in fast-moving environments where priorities shift daily and the work still has to ship.",
     ],
   },
 
@@ -49,16 +48,15 @@ const CONTENT = {
       {
         company: "Arsonal Design",
         role: "Project Manager",
-        location: "Los Angeles, CA",
+        location: "Culver City, CA",
         dates: "February 2023 – Present",
         blurb:
-          "Entertainment advertising agency — key art and campaign creative for studios, networks, and streamers.",
+          "Entertainment advertising agency — integrated creative campaigns for clients including Focus Features, Netflix, MGM+, and Roku.",
         bullets: [
-          // VERIFY: role-typical responsibilities written from positioning context — Halle to confirm/adjust.
-          "Own project plans and timelines across multiple simultaneous campaigns, from kickoff through final delivery.",
-          "Coordinate designers, creative directors, and client feedback rounds so reviews land on schedule and revisions stay in scope.",
-          "Manage asset workflows end to end — versioning, approvals, specs, and delivery — across high-volume creative output.",
-          "Act as the connective tissue between accounts, creative, and production, keeping everyone working from the same plan.",
+          "Serve as the primary client contact, managing requests, timelines, and deliverables across multiple simultaneous campaigns from kickoff through final delivery.",
+          "Coordinate design, production, and strategy teams, and manage six-figure project budgets while keeping creative work on time and on spec.",
+          "Introduced Notion to streamline project tracking and communication between creative departments, improving turnaround time and visibility into status.",
+          "Strengthened team efficiency through improved interdepartmental workflows, transparent communication, and proofing/QA on visual assets for accuracy, consistency, and brand integrity.",
         ],
       },
       {
@@ -89,27 +87,78 @@ const CONTENT = {
         ],
       },
       {
+        company: "Luna Bakery Café",
+        role: "Front Supervisor & Baker",
+        location: "Chagrin Falls, OH",
+        dates: "June 2018 – August 2019",
+        blurb:
+          "Additional experience.",
+        bullets: [
+          // VERIFY: role-typical responsibilities from title only — Halle to confirm/adjust.
+          "Supervised front-of-house operations and coordinated with kitchen staff to keep service running smoothly during high-volume shifts.",
+        ],
+      },
+      {
+        company: "LA Animal Services",
+        role: "Level 3 Dog Handler (Volunteer)",
+        location: "Los Angeles, CA",
+        dates: "November 2024 – Present",
+        blurb:
+          "Volunteer experience.",
+        bullets: [
+          // VERIFY: role-typical responsibilities from title only — Halle to confirm/adjust.
+          "Handle and care for shelter dogs on a volunteer basis, following safety protocols and supporting adoption-readiness.",
+        ],
+      },
+      {
         company: "Kol Tikvah",
         role: "Experiential Education Coordinator",
-        location: "Los Angeles, CA",
-        dates: "June 2021 – January 2023",
+        location: "Woodland Hills, CA",
+        dates: "July 2021 – December 2022",
         blurb:
           "Full-time · religious school, K–12 community programming.",
         bullets: [
           "Supported the School Director with day-to-day administrative operations, keeping programs, schedules, and communications running smoothly.",
-          "Designed and delivered curriculum for students across six grade levels, adapting plans and pacing to a range of ages and learning needs.",
-          "Owned the planning, promotion, and execution of weekly community events end to end — from concept through day-of logistics.",
-          "Managed program budgets, keeping spending on track and the school's finances healthy.",
-          "Served as the daily point of contact for parents, teachers, and staff, keeping every stakeholder informed and aligned.",
+          "Designed and executed weekly programs and events that increased youth engagement and participation.",
+          "Managed budgets, marketing, and logistics to ensure smooth operations and fiscal accountability.",
+          "Strengthened community relationships through consistent communication with parents, teachers, and clergy.",
+        ],
+      },
+      {
+        company: "Congregation Or Ami",
+        role: "Teacher & Youth Group Advisor",
+        location: "Calabasas, CA",
+        dates: "September 2019 – July 2021",
+        blurb:
+          "Religious school, grades 4–6.",
+        bullets: [
+          "Developed and led educational programs for grades 4–6 focused on leadership, Hebrew, and cultural learning.",
+          "Organized and facilitated youth group events that promoted teamwork and social growth.",
         ],
       },
     ],
     education: {
       school: "Indiana University Bloomington",
       degree: "B.A. Psychology",
-      detail: "Certificate in Clinical Psychological Science", // VERIFY
+      detail: "Clinical Psychological Science Certificate · Hutton Honors College",
       dates: "2015 – 2018",
     },
+  },
+
+  portfolio: {
+    eyebrow: "Selected work",
+    heading: "Key art & campaigns I've worked on",
+    // NOTE: image files not yet supplied — add real key art to assets/portfolio/<slug>.jpg
+    // for each item below. Cards render as a labeled placeholder until the file exists.
+    items: [
+      { title: "Pressure", studio: "Focus Features", slug: "pressure" },
+      { title: "Girls Like Girls", studio: "Focus Features", slug: "girls-like-girls" },
+      { title: "People We Meet on Vacation", studio: "Netflix", slug: "people-we-meet-on-vacation" },
+      { title: "The Last House", studio: "Netflix", slug: "the-last-house" },
+      { title: "Vanished", studio: "MGM+", slug: "vanished" },
+      { title: "The Ashlyn Harris Story", studio: "Roku", slug: "the-ashlyn-harris-story" },
+      { title: "America's Top 25 Female Athletes", studio: "Roku", slug: "americas-top-25-female-athletes" },
+    ],
   },
 
   strengths: {
