@@ -148,15 +148,9 @@ h2 {
   aspect-ratio: 2 / 3; border-radius: 6px; background: var(--paper-tint);
   background-size: cover; background-position: center;
   border: 1px solid var(--hairline);
-  display: flex; align-items: flex-end; position: relative;
   transition: transform .2s;
 }
 .pf-card:hover .pf-art { transform: translateY(-3px); border-color: var(--accent); }
-.pf-art-label {
-  font-family: var(--serif); font-size: 13px; font-weight: 600; color: var(--ink-soft);
-  padding: 10px 12px; text-wrap: balance; line-height: 1.3; width: 100%;
-  background: linear-gradient(to top, rgba(250,249,246,.92), rgba(250,249,246,0));
-}
 .pf-meta { padding: 12px 2px 0; }
 .pf-meta h3 { font-family: var(--serif); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 2px; }
 .pf-studio { font-size: 12.5px; color: var(--muted); }

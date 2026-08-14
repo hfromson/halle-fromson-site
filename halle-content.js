@@ -92,7 +92,7 @@ const CONTENT = {
         location: "Chagrin Falls, OH",
         dates: "June 2018 – August 2019",
         blurb:
-          "Additional experience.",
+          "Hospitality experience.",
         bullets: [
           // VERIFY: role-typical responsibilities from title only — Halle to confirm/adjust.
           "Supervised front-of-house operations and coordinated with kitchen staff to keep service running smoothly during high-volume shifts.",
